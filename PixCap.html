@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixCap</title>
+  <link rel="stylesheet" href="./css/script.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <script type="importmap">
+        {
+            "imports": {
+                "three": "../build/three.module.js"
+            }
+        }
+    </script>
+  <script type="module" src="./js/PixCap.js"></script>
+  <script type="module" src="./Utilities/InitialSetup.js"></script>
+  <div id="canvas" style="height: 100vh;width: 80%;"></div>
+
+  <div class="form1" id="BoxGeometryForm" style="display: none;">
+    <form">
+      <div>
+        <p>Length :</p>
+        <input type="range" id="length" min="0.1" max="2" value="1" step="0.1">
+        <label id="lengthValue">1 </label>
+      </div>
+      <div>
+        <p>Width :</p>
+        <input type="range" id="width" min="0.1" max="2" value="1" step="0.1">
+        <label id="widthValue">1 </label>
+      </div>
+      <div>
+        <p>Height :</p>
+        <input type="range" id="height" min="0.1" max="2" value="1" step="0.1">
+        <label id="heightValue">1 </label>
+      </div>
+
+      <button type="button" id="SubmitNewDataForBoxGeometry">"Submit data for Box Geometry"</button>
+      </form>
+  </div>
+  <div class="form1" id="CylinderGeometryForm" style="display: none;">
+    <form">
+      <label for="Length">Diameter :</label><br>
+      <input type="text" id="diameter" name="diameter" value="1"><br>
+      <label for="lname">Height :</label><br>
+      <input type="text" id="cylinderheight" name="cylinderheight" value="1"><br><br>
+      <button type="button" id="SubmitNewDataForCylinderGeometry">"Submit data for Cylinder Geometry"</button>
+      </form>
+  </div>
+  <div class="form1" id="IsoHedronGeometryForm" style="display: none;">
+    <form">
+
+      <button type="button" id="SubmitNewDataForIsoHedronGeometry">"Submit data for isoHedrongeometry Geometry"</button>
+      </form>
+  </div>
+</body>
+
+</html>
