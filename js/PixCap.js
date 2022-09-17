@@ -46,9 +46,33 @@ function CreateIcoSphereGeometry() {
   scene.add(cylinder);
 }
 
+function UpdateIsohedronGeometry() {
+  let boxparams = getIsohedronGeometryParametersFromUI();
+  CreateNewGeometryWithNewParameters(boxparams);
+}
+
+function UpdateCylinderGeometry() {
+  let boxparams = getCylinderGeometryParametersFromUI();
+  CreateNewGeometryWithNewParameters(boxparams);
+}
+
+function getIsohedronGeometryParametersFromUI() {
+  let diameter, segments;
+  diameter = parseFloat(document.getElementById("Icodiameter").value);
+  segments = parseFloat(document.getElementById("subdivisions").value);
+  return { diameter, segments };
+}
+
+function getCylinderGeometryParametersFromUI() {
+  let diameter, height;
+  diameter = parseFloat(document.getElementById("diameter").value);
+  height = parseFloat(document.getElementById("cylinderheight").value);
+  return { diameter, height };
+}
+
 function UpdateBoxGeometry() {
   let boxparams = getBoxGeometryParametersFromUI();
-  CreateNewBoxGeometryWithNewParameters(boxparams);
+  CreateNewGeometryWithNewParameters(boxparams);
 }
 
 function getBoxGeometryParametersFromUI() {
@@ -59,7 +83,7 @@ function getBoxGeometryParametersFromUI() {
   return { length, width, height };
 }
 
-function CreateNewBoxGeometryWithNewParameters(params) {
+function CreateNewGeometryWithNewParameters(params) {
   let geometry;
   if (!SelectedObject) {
     console.log("Nothing selected");
@@ -69,9 +93,10 @@ function CreateNewBoxGeometryWithNewParameters(params) {
       geometry = new THREE.BoxGeometry(params.length, params.height, params.width);
     }
     else if ("CylinderGeometry" == SelectedObject.geometry.type) {
-
+      geometry = new THREE.CylinderGeometry(params.diameter, params.diameter, params.height, 32)
     }
     else if ("IcosahedronGeometry" == SelectedObject.geometry.type) {
+      geometry = new THREE.IcosahedronGeometry(params.diameter, params.segments)
 
     }
   }
@@ -120,6 +145,14 @@ document.getElementById("SubmitNewDataForBoxGeometry").onclick = function (e) {
   UpdateBoxGeometry();
 }
 
+document.getElementById("SubmitNewDataForCylinderGeometry").onclick = function (e) {
+  UpdateCylinderGeometry();
+}
+
+document.getElementById("SubmitNewDataForIsoHedronGeometry").onclick = function () {
+  UpdateIsohedronGeometry();
+}
+
 document.getElementById("length").onclick = function () {
   document.getElementById("lengthValue").innerHTML = document.getElementById("length").value;
 }
@@ -130,4 +163,20 @@ document.getElementById("width").onclick = function () {
 
 document.getElementById("height").onclick = function () {
   document.getElementById("heightValue").innerHTML = document.getElementById("height").value;
+}
+
+document.getElementById("diameter").onclick = function () {
+  document.getElementById("diameterValue").innerHTML = (document.getElementById("diameter").value) * 2;
+}
+
+document.getElementById("cylinderheight").onclick = function () {
+  document.getElementById("cylinderheightValue").innerHTML = document.getElementById("cylinderheight").value;
+}
+
+document.getElementById("Icodiameter").onclick = function () {
+  document.getElementById("IcodiameterValue").innerHTML = (document.getElementById("Icodiameter").value) * 2;
+}
+
+document.getElementById("subdivisions").onclick = function () {
+  document.getElementById("subdivisionsValue").innerHTML = document.getElementById("subdivisions").value;
 }

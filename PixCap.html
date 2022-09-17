@@ -55,16 +55,31 @@
   </div>
   <div class="form1" id="CylinderGeometryForm" style="display: none;">
     <form">
-      <label for="Length">Diameter :</label><br>
-      <input type="text" id="diameter" name="diameter" value="1"><br>
-      <label for="lname">Height :</label><br>
-      <input type="text" id="cylinderheight" name="cylinderheight" value="1"><br><br>
+      <div>
+        <p>Diameter :</p>
+        <input type="range" id="diameter" min="0.1" max="1" value="1" step="0.1">
+        <label id="diameterValue">1 </label>
+      </div>
+      <div>
+        <p>Height :</p>
+        <input type="range" id="cylinderheight" min="0.1" max="2" value="1" step="0.1">
+        <label id="cylinderheightValue">2 </label>
+      </div>
       <button type="button" id="SubmitNewDataForCylinderGeometry">"Submit data for Cylinder Geometry"</button>
       </form>
   </div>
   <div class="form1" id="IsoHedronGeometryForm" style="display: none;">
     <form">
-
+      <div>
+        <p>Diameter :</p>
+        <input type="range" id="Icodiameter" min="0.1" max="1" value="1" step="0.1">
+        <label id="IcodiameterValue">2 </label>
+      </div>
+      <div>
+        <p>Sub-divisions :</p>
+        <input type="range" id="subdivisions" min="0.1" max="1" value="0.5" step="0.05">
+        <label id="subdivisionsValue">2 </label>
+      </div>
       <button type="button" id="SubmitNewDataForIsoHedronGeometry">"Submit data for isoHedrongeometry Geometry"</button>
       </form>
   </div>
