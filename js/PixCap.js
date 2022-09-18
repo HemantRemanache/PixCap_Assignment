@@ -1,9 +1,13 @@
 import { camera, scene, renderer, CreateFloorUsingtexture, SetControls, AddLights } from '../Utilities/InitialSetup.js';
 import * as THREE from "three";
+import { TWEEN } from '../Utilities/tween.module.min.js'
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
-let SelectedObject;
+let SelectedObject,startAnimate=false;
+let yvalue=15;
+let time =5000;
+let prevtime=0;
 init();
 animate();
 function init() {
@@ -16,9 +20,10 @@ function init() {
   camera.position.set(0, 0, 10);
 }
 
-function animate() {
+function animate(currenttime) {
   requestAnimationFrame(animate)
   renderer.render(scene, camera);
+  TWEEN.update();
 }
 
 function CreateACubegeometry() {
@@ -179,4 +184,31 @@ document.getElementById("Icodiameter").onclick = function () {
 
 document.getElementById("subdivisions").onclick = function () {
   document.getElementById("subdivisionsValue").innerHTML = document.getElementById("subdivisions").value;
+}
+
+document.getElementById("applyBouncing").onclick = function () {
+  yvalue=10;
+  time=2000;
+  if (SelectedObject)
+applyBouncing();
+  // applyBouncing();
+
+function applyBouncing() {
+  let mesh;
+  if(SelectedObject)
+  mesh=SelectedObject;
+  else return;  
+
+  new TWEEN.Tween(mesh.position)
+  .to({y: yvalue}, time/2)
+  .easing(TWEEN.Easing.Cubic.Out)
+  .start()
+  .onComplete(() => {
+    new TWEEN.Tween(mesh.position)
+      .to({y: 0}, time/2)
+      .easing(TWEEN.Easing.Cubic.In)
+      .start()
+   }
+)
+}
 }
