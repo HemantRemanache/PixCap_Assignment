@@ -3,7 +3,6 @@
 
 ### Run
 * Right click on PixCap.html and open with Live Server
-* Go to `localhost:8080` in the web browser
 
 ### Environment
 The provided `pixCap.html` script loads a simple three.js scene and adds three primitive objects: Cylinder, Cube, IcoSphere.
@@ -35,8 +34,3 @@ where
 Click on any one of the mesh, the color changes from default to red 
 below the form, there is a botton named as bounce(animation), CLicking on this button would do the animation
 I used tween.js for this animation, however there were other solutions present on internet such as "https://medium.com/geekculture/learning-three-js-1-how-to-create-a-bouncing-ball-5f423a629e59" I decided to try by my own. I was not able to make this work out for 2nd bounce. Will work on it 
-
-
-The result of this animation should roughly match the following video:(https://www.youtube.com/watch?v=a7oSbf8NiLw)
-
-Please implement this on a mesh in the scene e.g. a sphere, so that the animation can be viewed
